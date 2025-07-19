@@ -23,6 +23,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #ifndef __4ti2_zsolve__Integer_
 #define __4ti2_zsolve__Integer_
 
+#ifdef __cplusplus
+#include <cstdint>
+#else
+#include <inttypes.h>
+#endif
+
 #include "4ti2/4ti2_config.h"
 
 #ifdef _4ti2_HAVE_GMP
