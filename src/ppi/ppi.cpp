@@ -44,7 +44,7 @@
 using namespace std;
 
 // Timer stuff taken from src/zsolve/cputime.c
-#ifdef _POSIX_TIMERS
+#if defined(_POSIX_TIMERS) && !defined(__MINGW64__)
 #include <sys/time.h>
 #include <sys/resource.h>
 #endif
@@ -52,7 +52,7 @@ using namespace std;
 
 double getCPUTime()
 {
-#ifdef _POSIX_TIMERS
+#if defined(_POSIX_TIMERS) && !defined(__MINGW64__)
 	struct rusage usage;
 
 	getrusage(RUSAGE_SELF, &usage);
