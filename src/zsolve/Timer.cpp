@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 #include <unistd.h>
 #include <ctime>
-#ifdef _POSIX_TIMERS
+#if defined(_POSIX_TIMERS) && !defined(__MINGW64__)
 #include <sys/times.h>
 #endif
 #include <iomanip>
@@ -50,7 +50,7 @@ double Timer::get_elapsed_time() const
 
 double Timer::get_time()
 {
-#if defined _POSIX_TIMERS
+#if defined(_POSIX_TIMERS) && !defined(__MINGW64__)
     struct tms t;
     times(&t); 
     return (double) t.tms_utime/sysconf(_SC_CLK_TCK);
